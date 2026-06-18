@@ -1,1 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>接单大厅</title>
 
+<style>
+body{margin:0;font-family:Arial;background:#f5f5f5;}
+.card{background:#fff;margin:10px;padding:15px;border-radius:12px;}
+button{width:100%;padding:10px;background:#4caf50;color:#fff;border:none;border-radius:8px;}
+</style>
+</head>
+
+<body>
+
+<h3 style="text-align:center;">接单大厅</h3>
+
+<div class="card">
+    <h4>网页制作</h4>
+    <p>制作首页UI</p>
+    <button onclick="take()">接单</button>
+</div>
+
+<script>
+function take(){
+    let orders = JSON.parse(localStorage.getItem("orders") || "[]");
+
+    orders.push({
+        title:"网页制作",
+        time:new Date().toLocaleString()
+    });
+
+    localStorage.setItem("orders", JSON.stringify(orders));
+
+    alert("接单成功");
+}
+</script>
+
+</body>
+</html>
